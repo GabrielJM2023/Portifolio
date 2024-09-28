@@ -20,9 +20,9 @@ export default function Home() {
               <li><a href="#">Contato</a></li>
             </ul>
           </nav>  
-        </div>
-      </header> 
-
+        </div>        
+      </header>
+      
       <section className="inicio">
         <div className="TituloInicio">
           <h1>Gabriel Jardim</h1>
@@ -43,7 +43,7 @@ export default function Home() {
 
       <section className="Sobre">        
         <div className="ImagemSobre">          
-          <img src='https://github.com/GabrielJM2023.png' className='avatar'/>
+          <img src='https://github.com/GabrielJM2023.png' className='Avatar'/>
         </div>
         <div className="AreaSobre">
           <h5>Gabriel Jardim</h5>
@@ -56,11 +56,15 @@ export default function Home() {
       <div className="TituloCentro">
           <div className="Titulo">
             <h1>Trabalhos</h1>
-          </div>
+          </div>          
       </div>
 
 
-
+      <div className="TituloCentro">
+          <div className="Titulo">
+            <h1>Contato</h1>
+          </div>
+      </div>
 
       <div className="TituloCentro">
           <div className="Titulo">

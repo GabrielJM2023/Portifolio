@@ -1,16 +1,17 @@
 :root{
-  --primary-color:#292424;
-
+  --primary-color:#122c14;
+  --secundary-color: #177527;
+  --text-color: #b8e6b3;
+  --fundo-header-color: #234120;
 }
 
 /* Titulos */
 
 .TituloCentro{
-  color: white;
+  color: var(--text-color);
   display: flex;
   align-items: center;  
-  justify-content: center;
-  
+  justify-content: center;  
 }
 .Titulo{
   display: flex;
@@ -20,13 +21,8 @@
   margin: 20px;
 }
 
-.Linha{
-  border: 1px solid;
-  width: 50%;
-}
-
 body{  
-  background-color: var(--primary-color);
+  background-color: var(--primary-color);  
 }
 
 body, ul, li, p{
@@ -34,7 +30,7 @@ body, ul, li, p{
   padding: 0;
   list-style: none;
   font-size: 1.2rem;
-  font-family: Arial, Helvetica, sans-serif;  
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* HEADER */
@@ -43,8 +39,20 @@ body, ul, li, p{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
+}
+
+.menuBar{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-size: 40px;
+  position: fixed;  
   height: 9vh;
+  padding-top: 10px;
+  margin-top: 80px;
+  background-color: var(--fundo-header-color);
 }
 
 .menu{
@@ -55,28 +63,22 @@ body, ul, li, p{
 .menu li{
   margin-left: 10px;
   font-size: 22px;
+  border-radius: 10px;
+}
+
+.menu li:hover{
+  background-color: var(--secundary-color);
+  transition: 1s;
 }
 
 a{
   text-decoration: none;
-  color: white;
+  color: var(--text-color);
 }
 
 .menu li a{
   display: block;
   padding: 10px;
-}
-
-.menuBar{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  width: 70%;
-  border-radius: 50px;
-  font-size: 40px;
-  border: 1px solid #0b6cad;
-  position: fixed;
 }
 
 .home .header .IconNome{
@@ -109,11 +111,11 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  color: white;
+  color:var(--text-color);
 }
 
 .Titulo{
-  margin-top: 100px;
+  margin-top: 200px;
   margin-bottom: 100px;
 }
 
@@ -136,10 +138,14 @@ a{
 }
 
 .IconTitulo{
-  background-color: #0b6cad;
+  color:white;
   width: 25%;
   height: 110%;
   border-radius: 5px;
+}
+
+.IconTitulo:hover{
+  background-color: var(--secundary-color);  
 }
 
 /* Sobre */
@@ -147,11 +153,19 @@ a{
 .Sobre{
   display: flex;
   justify-content: center;
-  color: white;
+  color: var(--text-color);
 }
 
 .Sobre .ImagemSobre{
   margin-right: 40px;
+  
+  
+}
+
+.Sobre .ImagemSobre .Avatar{
+  box-shadow: 5px 5px 50px #77ffc0;
+  padding: 0px;
+  border-radius: 25px;
 }
 
 .Sobre .AreaSobre{
@@ -165,5 +179,4 @@ a{
 .Sobre .AreaSobre h3{
   margin: 0;
   margin-bottom: 15px;
-
 }
