@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 :root{
   --primary-color:#122c14;
   --secundary-color: #177527;
@@ -13,13 +17,13 @@
   align-items: center;  
   justify-content: center;  
 }
+
 .Titulo{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70%;
-  margin: 20px;
+  margin-top: 200px;
+  margin-bottom: 50px;
 }
+
+/* Titulos */
 
 body{  
   background-color: var(--primary-color);  
@@ -91,11 +95,7 @@ a{
   padding-left: 20px;  
 }
 
-
-
 /* HEADER */
-
-
 
 /* Inicio */
 
@@ -112,11 +112,6 @@ a{
   justify-content: center;
   align-items: start;
   color:var(--text-color);
-}
-
-.Titulo{
-  margin-top: 200px;
-  margin-bottom: 100px;
 }
 
 .TituloInicio h1{
@@ -179,4 +174,63 @@ a{
 .Sobre .AreaSobre h3{
   margin: 0;
   margin-bottom: 15px;
+}
+
+
+/* Habilidades */
+
+.Habilidades{
+  height: 70vh;
+  display: flex;  
+  justify-content: center;
+}
+
+.Habilidades .LadoEsquerdo{
+  background-color: aqua;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Habilidades .LadoEsquerdo .ContainerIcon{
+  background-color: red;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  width: 70%;
+  height: 100%;
+}
+
+.Habilidades .LadoEsquerdo .ContainerIcon .AreaIcon{
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Habilidades .LadoEsquerdo .ContainerIcon .AreaIcon .Icon{
+  font-size: 100px;  
+}
+
+.Habilidades .LadoDireito{
+  background-color: blueviolet;
+  width: 50%;
+  height: 100%;
+}
+
+
+
+.Habilidades .LadoDireito .DefaultText {
+  display: block; /* O texto padrão está visível inicialmente */
+}
+
+.LadoEsquerdo .Delphi:hover ~ .LadoEsquerdo .React{
+  display: none;
+}
+
+.LadoDireito .TextDelphi {
+  display: block;
 }
