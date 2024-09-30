@@ -152,13 +152,11 @@ a{
 }
 
 .Sobre .ImagemSobre{
-  margin-right: 40px;
-  
-  
+  margin-right: 40px; 
 }
 
 .Sobre .ImagemSobre .Avatar{
-  box-shadow: 5px 5px 50px #77ffc0;
+  box-shadow: 0px 0px 15px #77ffc0;
   padding: 0px;
   border-radius: 25px;
 }
@@ -186,16 +184,14 @@ a{
 }
 
 .Habilidades .LadoEsquerdo{
-  background-color: aqua;
   width: 50%;
   height: 100%;
-  display: flex;
+  display: flex; 
   justify-content: center;
   align-items: center;
 }
 
 .Habilidades .LadoEsquerdo .ContainerIcon{
-  background-color: red;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
@@ -204,11 +200,20 @@ a{
 }
 
 .Habilidades .LadoEsquerdo .ContainerIcon .AreaIcon{
-  background-color: blue;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--fundo-header-color);
+  border-radius: 10px;
+  color: var(--secundary-color);
+  transition: transform 0.3s;
+  box-shadow: transparent;
+}
+
+.AreaIcon:hover {
+  transform: scale(1.3); /* Aumenta o tamanho do ícone em 20% */   
+  box-shadow: 0px 0px 15px #77ffc0;    
 }
 
 .Habilidades .LadoEsquerdo .ContainerIcon .AreaIcon .Icon{
@@ -216,21 +221,40 @@ a{
 }
 
 .Habilidades .LadoDireito{
-  background-color: blueviolet;
-  width: 50%;
+  width: 60%;
   height: 100%;
 }
 
-
-
-.Habilidades .LadoDireito .DefaultText {
-  display: block; /* O texto padrão está visível inicialmente */
-}
-
-.LadoEsquerdo .Delphi:hover ~ .LadoEsquerdo .React{
+.Habilidades .LadoDireito .Text{
+  height: 100%;
+  color: var(--secundary-color);
   display: none;
 }
 
-.LadoDireito .TextDelphi {
-  display: block;
+.Habilidades .LadoDireito .TituloHabilidade{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.Habilidades .LadoDireito .Descricao{
+  font-size: 23px;
+  width: 95%;
+}
+
+/* Habilidade */
+
+/* Trabalhos */
+
+.Trabalho {
+  background-color: red;
+  width: 90vw;
+  height: 98vh;
+  margin: 0 auto;
+}
+
+.Trabalho .Carrosel{
+  background-color: #177527;
+  height: 100%;
 }
