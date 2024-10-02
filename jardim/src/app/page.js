@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect } from "react";
-import { FaJedi } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { MdWhatsapp } from "react-icons/md";
