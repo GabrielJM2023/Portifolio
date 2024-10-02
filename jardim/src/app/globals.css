@@ -2,6 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.Responsivo{
+  display: none;
+}
+
 :root{
   --primary-color:#122c14;
   --secundary-color: #177527;
@@ -21,12 +25,13 @@ html {
 .Titulo{
   margin-top: 200px;
   margin-bottom: 50px;
+  font-size: 40px;
 }
 
 /* Titulos */
 
 body{  
-  background-color: var(--primary-color);  
+  background-color: var(--primary-color);   
 }
 
 body, ul, li, p{
@@ -43,6 +48,8 @@ body, ul, li, p{
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; /* Garante que ele possa ser afetado pelo z-index */
+  z-index: 1000; 
 }
 
 .menuBar{
@@ -50,24 +57,28 @@ body, ul, li, p{
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+  width: 100%;  
   font-size: 40px;
   position: fixed;  
   height: 9vh;
-  padding-top: 10px;
-  margin-top: 80px;
+  margin-top: 70px;
   background-color: var(--fundo-header-color);
 }
 
 .menu{
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
 }
 
 .menu li{
-  margin-left: 10px;
+  margin-left: 15px;
   font-size: 22px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 2.5rem;
 }
 
 .menu li:hover{
@@ -75,12 +86,16 @@ body, ul, li, p{
   transition: 1s;
 }
 
-a{
+.menuBar h1{
+  font-size: 30px;
+}
+
+a, h1{
   text-decoration: none;
   color: var(--text-color);
 }
 
-.menu li a{
+.menu li h1{
   display: block;
   padding: 10px;
 }
@@ -121,21 +136,25 @@ a{
   margin: 0;
 }
 
-.TituloInicio h4{
-  font-size: 50px;
+.TituloInicio h2{
+  font-size: 25px;
 }
 
 .IconsTitulo{
   display: flex;
-  justify-content: space-around;
-  width: 25%;
-  font-size: 35px;
+  width: 70%;
+  height: 15%;
+}
+
+.IconsTitulo a{
+  width: 20%;
+  margin-right: 20px;
 }
 
 .IconTitulo{
   color:white;
-  width: 25%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
 }
 
@@ -247,14 +266,208 @@ a{
 
 /* Trabalhos */
 
-.Trabalho {
-  background-color: red;
+.Trabalho { 
   width: 90vw;
-  height: 98vh;
   margin: 0 auto;
 }
 
 .Trabalho .Carrosel{
-  background-color: #177527;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contato */
+
+.Contato .AreaContato{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 60px;
+  color: var(--secundary-color);
+}
+
+.Contato .AreaContato .InfoContato{
+  padding-right: 40px;
+}
+
+.Contato .AreaContato .InfoContato h1{
+  font-size: 40px;
+}
+
+.Contato .AreaContato .InfoContato h3{
+  font-size: 25px;
+}
+
+
+/* Responsividade */
+
+@media(max-width: 845px){  
+
+  .Titulo{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 20px;
+  }
+
+  /* HEADER */
+  .menu{
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    width: 40vw;
+    height: 60vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--fundo-header-color);
+    transition: 0.3s;
+    transform: translateX(100%);
+  }
+
+  .menuResponsivo{
+    display: block;    
+    position: pointer;
+  }
+
+  .menu.active{
+    transform: translateX(0);
+  }
+
+  .menuBar h1{
+    font-size: 25px;
+  }
+
+  /* HEADER */
+  
+  /* Inicio */
+
+  .inicio{
+    margin-top: 100px;
+  }
+
+  .inicio .TituloInicio h1{
+    font-size: 50px;
+  }
+
+  .inicio .TituloInicio h2{
+    font-size: 25px;
+  }
+
+  /* Inicio */
+
+  /* SOBRE */
+  .Sobre{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Sobre .ImagemSobre{
+    margin-right: 0;     
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Sobre .ImagemSobre .Avatar{
+    width: 70%;
+  }
+  
+  .Sobre .AreaSobre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .Sobre .AreaSobre h1{
+    font-size: 40px;
+  }
+
+  .Sobre .AreaSobre h3{
+    font-size: 20px;
+  }
+
+  /* SOBRE */
+
+  /* Habilidades */
+
+  .Habilidades{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .Habilidades .LadoEsquerdo{
+    width: 100%;
+    height: 30%;
+    justify-content: center;
+  }
+
+  .Habilidades .LadoEsquerdo .ContainerIcon .AreaIcon .Icon{
+    font-size: 50px;
+  }
+
+  .Habilidades .LadoDireito{    
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .Habilidades .LadoDireito .AreaTexto{
+    display: flex;
+    justify-content: center;
+  }
+
+  .Habilidades .LadoDireito .AreaTexto .Text{
+    display: flex;
+    justify-content: center;    
+    width: 80%;
+  }
+
+  .Habilidades .LadoDireito .AreaTexto .Text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Habilidades .LadoDireito .AreaTexto h1{
+    font-size: 30px;
+  }
+
+  .Habilidades .LadoDireito .AreaTexto h3{
+    font-size: 18px;
+  }
+
+  /* Habilidades */
+
+
+  /* Contato */
+
+  .Contato .AreaContato{
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Contato .AreaContato .InfoContato{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;    
+  }
+
+  .Contato .AreaContato .InfoContato h1{
+    font-size: 20px;
+    padding-right: 15px;
+  }
+
+  .Contato .AreaContato .InfoContato h3{
+    font-size: 15px;
+  }
+  /* Contato */
 }

@@ -1,19 +1,25 @@
-.AreaCarrossel {
-    overflow: hidden; /* Oculta itens que não estão visíveis */
-    position: relative;
+.AreaCarrossel{
+    width: 50%;
+}
+.Area h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secundary-color);
 }
 
-.slides {
-    display: flex; /* Exibe os slides em linha */
-    transition: transform 0.5s ease; /* Transição suave */
-}
 
-.Area {
-    min-width: 100%; /* Cada área ocupa 100% do carrossel */
-    box-sizing: border-box; /* Inclui padding e border no tamanho total */
-}
+@media(max-width: 845px){
+    .AreaCarrossel{
+        width: 90%;
+    }
 
-img {
-    width: 100%; /* Faz a imagem preencher o espaço do contêiner */
-    height: auto; /* Mantém a proporção da imagem */
+    .Area h1{
+        font-size: 1.5rem;
+    }
+
+    .Area img{
+        max-width: 100%;
+        height: auto;
+    }
 }

@@ -14,20 +14,24 @@ import { FaHtml5 } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa";
 import { DiScrum } from "react-icons/di";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 import Carrosel from "../Components/Carrossel";
 
-
 export default function Home() {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   useEffect(() => {
+    const menu = document.querySelector('.menuMobile');
+    const navList = document.querySelector('.menu');
+    const activeClass = "active";
+
+    function handleClick() {
+      navList.classList.toggle(activeClass);
+    }
+  
+    if (menu) {
+      menu.addEventListener('click', handleClick);
+    }
+      
     const icons = document.querySelectorAll('.AreaIcon');
     const texts = document.querySelectorAll('.Text');
 
@@ -55,27 +59,33 @@ export default function Home() {
         icon.removeEventListener('mouseover', () => {});
         icon.removeEventListener('mouseout', () => {});
       });
+
+      if (menu) {
+        menu.removeEventListener('click', handleClick);
+      };
     };
   }, []);
 
   return (
     <div className="home">
       <header className="header">
-        <div className="menuBar">
+        <nav className="menuBar">  
           <div className="IconNome">
-            <a href="#"><FaJedi/></a>
-            <a href="#">G. Jardim</a>
+            <h1 href="#">G. Jardim</h1>
           </div>
-          <nav>          
-            <ul className="menu">
-              <li><a href="#">Início</a></li>
-              <li><a href="#sobre">Sobre</a></li>
-              <li><a href="#habilidades">Habilidades</a></li>
-              <li><a href="#trabalho">Trabalhos</a></li>
-              <li><a href="#">Contato</a></li>
-            </ul>
-          </nav>  
-        </div>
+        
+          <div className="Responsivo menuResponsivo">
+            <RxHamburgerMenu className="menuMobile"/>
+          </div>        
+         
+          <ul className="menu">
+            <li><a href="#">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#trabalho">Trabalhos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>          
       </header>
       
       <section className="inicio">
@@ -83,9 +93,16 @@ export default function Home() {
           <h1 id="home">Gabriel Jardim</h1>
           <h2>Desenvolvedor Front-End</h2>  
           <div className="IconsTitulo">
-            <FaGithub className="IconTitulo"/>
-            <FaLinkedinIn className="IconTitulo"/>
-            <MdWhatsapp className="IconTitulo"/>
+            <a href="https://github.com/GabrielJM2023" target="_blank" rel="noopener noreferrer">
+              <FaGithub className="IconTitulo" />
+            </a>
+
+            <a href="https://www.linkedin.com/in/gabriel-jardim-machado/" target="_blank" rel="noopener noreferrer">
+              <FaLinkedinIn className="IconTitulo"/>
+            </a>
+            <a href="https://wa.me/5566999421158" target="_blank" rel="noopener noreferrer">
+              <MdWhatsapp className="IconTitulo"/>
+            </a>
           </div>
         </div>        
       </section> 
@@ -158,8 +175,7 @@ export default function Home() {
                 </h1>
               </div> 
               <h3 className="Descricao">
-                Trabalho com Delphi há bastante tempo, utilizando-o diariamente no meu trabalho. Tenho experiência em manipulação de JSON, especialmente para integrações e autenticação via API. Estou acostumado a trabalhar com diversos componentes, como TUniQuery, TJvMemoryData, TMS FNC Widget Progress, TRestRequest, TRestResponse, TRestClient, TIdHTTP. Recentemente, venho realizando integrações com APIs, como as do Santander e Sicredi, para criação de pagamentos via PIX, e também estou familiarizado com o uso de certificados digitais (arquivos PEM e KEY) para autenticações seguras.
-                Além disso, utilizo TStringList para manipular dados e salvar arquivos, e desenvolvo enums personalizados, para tabelas específicas. Tenho experiência em lidar com bancos de dados, criando relacionamentos entre datasets pai e filho.
+                Trabalho com Delphi há bastante tempo. Tenho experiência em manipulação de JSON, especialmente para integrações e autenticação via API. Estou acostumado a trabalhar com diversos componentes, como TUniQuery, TJvMemoryData, TMS FNC Widget Progress, TRestRequest, TRestResponse, TRestClient, TIdHTTP. Recentemente, realizei integrações com APIs, como as do Santander e Sicredi, para criação de pagamentos e recebimentos via PIX e também estou familiarizado com o uso de certificados digitais (arquivos PEM e KEY) para autenticações seguras.                
               </h3>
             </div>
 
@@ -169,9 +185,11 @@ export default function Home() {
                   React
                 </h1>
               </div> 
-              <h3 className="Descricao">
-                Tenho trabalhado em projetos com React, utilizando o Visual Studio Code e o Node.js localmente. Também estou desenvolvendo Progressive Web Apps (PWA) para criar aplicações modernas e responsivas. Já adquiri um bom entendimento sobre componentes e gerenciamento de estado em React, e continuo estudando e me aprimorando na tecnologia para melhorar minhas habilidades.
-              </h3>
+              <div>
+                <h3 className="Descricao">
+                  Tenho trabalhado em projetos com React. Já desenvolvi Progressive Web Apps (PWA) para criar aplicações modernas e responsivas. Já adquiri um bom entendimento sobre componentes e gerenciamento de estado em React e continuo estudando e me aprimorando na tecnologia para melhorar minhas habilidades.
+                </h3>
+              </div>
             </div>
 
             <div className="Text TextJavascript"> 
@@ -192,7 +210,7 @@ export default function Home() {
                 </h1>
               </div> 
               <h3 className="Descricao">
-              Ainda estou me aprofundando em TypeScript, mas entendo que ele é um ótimo complemento ao JavaScript, especialmente em projetos maiores e mais complexos. Gosto da ideia de adicionar tipagem estática ao código, já que isso traz mais segurança e previsibilidade no desenvolvimento.  
+                Ainda estou me aprofundando em TypeScript, mas entendo que ele é um ótimo complemento ao JavaScript, especialmente em projetos maiores e mais complexos. Gosto da ideia de adicionar tipagem estática ao código, já que isso traz mais segurança e previsibilidade no desenvolvimento.  
               </h3>
             </div>
 
@@ -203,7 +221,7 @@ export default function Home() {
                 </h1>
               </div> 
               <h3 className="Descricao">
-              Utilizo HTML para construir as estruturas das páginas nos meus projetos, especialmente em React. Tenho noção de como aplicar boas práticas de SEO e acessibilidade, que são importantes para garantir que as aplicações sejam encontradas e acessíveis para todos os usuários.
+                Utilizo HTML para construir as estruturas das páginas nos meus projetos, especialmente em React. Tenho noção de como aplicar boas práticas de SEO e acessibilidade, que são importantes para garantir que as aplicações sejam encontradas e acessíveis para todos os usuários.
               </h3>
             </div>
 
@@ -225,7 +243,7 @@ export default function Home() {
                 </h1>
               </div> 
               <h3 className="Descricao">
-              Tenho experiência em trabalhar com bancos de dados, especialmente na criação e manipulação de tabelas, consultas e relacionamentos. Utilizo Delphi para interagir com bancos de dados, utilizando componentes como TUniQuery para executar consultas SQL e gerenciar dados. Estou familiarizado com conceitos de modelagem de dados, normalização e otimização de consultas, o que me ajuda a garantir a eficiência nas operações com dados.
+                Tenho experiência em trabalhar com bancos de dados, especialmente na criação e manipulação de tabelas, consultas e relacionamentos. Estou familiarizado com conceitos de modelagem de dados, normalização e otimização de consultas, o que me ajuda a garantir a eficiência nas operações com dados.
               </h3>
             </div>
 
@@ -247,7 +265,7 @@ export default function Home() {
                 </h1>
               </div> 
               <h3 className="Descricao">
-              Utilizo o Git como meu sistema de controle de versão, o que me permite gerenciar alterações no meu código de forma eficaz. Tenho experiência em criar repositórios, fazer commits, branches e merges, e utilizo comandos básicos como git clone, git pull, git push, entre outros. Além disso, compreendo a importância do Git para a colaboração em equipe e para o gerenciamento de versões de projetos.
+                Utilizo o Git como meu sistema de controle de versão, o que me permite gerenciar alterações no meu código de forma eficaz. Tenho experiência em criar repositórios, fazer commits, branches e merges, e utilizo comandos básicos como git clone, git pull, git push, entre outros. Além disso, compreendo a importância do Git para a colaboração em equipe e para o gerenciamento de versões de projetos.
               </h3>
             </div>
 
@@ -261,7 +279,6 @@ export default function Home() {
                 Estou familiarizado com a metodologia Scrum, que utilizo para gerenciar projetos de desenvolvimento. Entendo os papéis de Scrum Master, Product Owner e a equipe de desenvolvimento, além de como funcionam as sprints, reuniões diárias (stand-ups) e revisões de sprint. A metodologia Scrum me ajuda a manter o foco nas prioridades do projeto e a promover uma comunicação eficaz dentro da equipe, resultando em entregas contínuas e melhoria contínua.
               </h3>
             </div>
-
           </div>
         </div>      
       </section>
@@ -278,11 +295,29 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="TituloCentro">
+      <div className="TituloCentro" id='contato'>
         <div className="Titulo">
           <h1>Contato</h1>
         </div>
       </div>
+
+      <section className="Contato">
+        <div className="AreaContato">
+          <div className="InfoContato">
+            <h1>Localização</h1>
+            <h4>Butanã, São Paulo</h4>
+          </div>
+          <div className="InfoContato">
+            <h1>Email</h1>
+            <h3>jardimgabriel2022@gmail.com</h3>
+          </div>
+          <div className="InfoContato">
+            <h1>Celular</h1>
+            <h3>(66) 9 9942-1158</h3>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

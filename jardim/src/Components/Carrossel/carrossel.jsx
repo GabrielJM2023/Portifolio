@@ -1,38 +1,70 @@
 import React from "react";
-import "./style.css";
-import Embreve from '../../app/images/Embreve.jpeg'; 
-import Teste from '../../app/images/BordaVinha.jpeg'; 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import "./style.css"; // Seu arquivo CSS para customização
 
 const data = [
     {
         name: 'Em Breve',
-        img: Embreve,
+        img: '/images/Embreve.jpeg',
     },
     {
-        name: 'Em Breve2',
-        img: "../../app/images/BordaVinha.jpeg",
-    }
+        name: 'Em Breve',
+        img: '/images/Embreve.jpeg',
+    },
+    {
+        name: 'Em Breve',
+        img: '/images/Embreve.jpeg',
+    },
 ];
 
 function Carrosel() {
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        centerMode: true,
+        responsive: [
+          {
+            breakpoint: 1920,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              centerMode: true, // Desativa o modo centralizado
+              centerPadding: '100px', // Remove o padding
+              dots: true
+            },
+          },
+          {
+            breakpoint: 845,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: false,
+              centerMode: false, // Desativa o modo centralizado
+              centerPadding: '0', // Remove o padding
+              dots: true
+            },
+          }
+        ]
+      };
+
     return (
         <div className="AreaCarrossel">
-            <div className="slides">
-                {data.map((d, index) => (
-                    <div className="Area" key={index}>
-                        <div>
-                            <div>
-                                <img src={d.img} alt={d.name} /> 
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h1>{d.name}</h1>
-                            </div>
-                        </div>
+            <Slider {...settings}>
+                {data.map((d) => (
+                    <div className="Area">
+                        <img src={d.img} alt={d.name} className="carousel-image" />
+                        <h1>{d.name}</h1>
                     </div>
                 ))}
-            </div>
+            </Slider>
         </div>
     );
 }
