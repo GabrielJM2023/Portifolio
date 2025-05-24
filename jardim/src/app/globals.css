@@ -6,6 +6,10 @@ html {
   display: none;
 }
 
+body, html {
+  overflow-x: hidden;
+}
+
 :root{
   --primary-color:#187528;
   --secundary-color: #1daa35;
@@ -331,6 +335,10 @@ a, h1{
 
   .menu.active{
     transform: translateX(0);
+  }
+
+  .Responsivo {
+    display: block;
   }
 
   .menuBar h1{

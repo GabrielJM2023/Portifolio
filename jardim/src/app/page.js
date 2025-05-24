@@ -35,6 +35,11 @@ export default function Home() {
     const icons = document.querySelectorAll('.AreaIcon');
     const texts = document.querySelectorAll('.Text');
 
+    texts.forEach(text => {
+      text.style.display = 'none';
+    });
+
+
     icons.forEach(icon => {
       icon.addEventListener('mouseover', () => {
         texts.forEach(text => {
