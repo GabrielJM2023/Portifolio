@@ -7,8 +7,8 @@ html {
 }
 
 :root{
-  --primary-color:red;
-  --secundary-color: #177527;
+  --primary-color:#187528;
+  --secundary-color: #1daa35;
   --text-color: #b8e6b3;
   --fundo-header-color: #234120;
 }

@@ -305,7 +305,7 @@ export default function Home() {
         <div className="AreaContato">
           <div className="InfoContato">
             <h1>Localização</h1>
-            <h4>Butanã, São Paulo</h4>
+            <h4>Rondonópolis, Mato Grosso</h4>
           </div>
           <div className="InfoContato">
             <h1>Email</h1>
