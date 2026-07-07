@@ -11,12 +11,13 @@ import {
   HStack,
   SimpleGrid,
   Link,
-  Separator,
+  Separator, 
 } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
 import { ColorModeButton } from "@/components/ui/color-mode";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { toaster } from "@/components/ui/toaster";
 
 const MotionBox = motion(Box);
 
@@ -24,6 +25,47 @@ const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
+
+const email = "jardimgabriel2022@gmail.com";
+
+const handleCopyEmail = async () => {
+  await navigator.clipboard.writeText(
+    "jardimgabriel2022@gmail.com"
+  );
+
+  toaster.create({
+    title: "Email copiado!",
+    description: "Agora é só colar onde desejar.",
+    type: "success",
+  });
+};
+
+const projects = [
+  {
+    title: "MiniMoney",
+    desc: "Controle financeiro simples com dashboard e categorização de gastos.",
+    stack: "Next.js · Node · SQL",
+    highlight: "Foco em organização financeira pessoal",
+    href: "https://minimoney.vercel.app", // coloque seu link
+    status: "online",
+  },
+  {
+    title: "FootStats",
+    desc: "Dashboard com dados do Brasileirão e visualização de estatísticas.",
+    stack: "React · APIs · Charts",
+    highlight: "Consumo de APIs esportivas",
+    href: undefined,
+    status: "developing",
+  },
+  {
+    title: "ASOFY",
+    desc: "Sistema de gestão de ASO para clínicas e empresas.",
+    stack: "React · Node · Delphi",
+    highlight: "Sistema corporativo real",
+    href: undefined,
+    status: "developing",
+  },
+];
 
 export default function Home() {
   return (
@@ -77,31 +119,11 @@ export default function Home() {
                 escaláveis e com boa experiência de usuário.
               </Text>
 
-              <HStack gap={4} pt={4}>
-                <Button
-                  colorPalette="green"
-                  size="lg"
-                  _hover={{ transform: "translateY(-2px)" }}
-                  transition="0.2s"
-                >
-                  Ver Projetos
-                </Button>
-
-                <Button
-                  variant="outline"
-                  size="lg"
-                  _hover={{ transform: "translateY(-2px)" }}
-                  transition="0.2s"
-                >
-                  Contato
-                </Button>
-              </HStack>
-
               <HStack pt={6} gap={4}>
-                <Link href="https://github.com">
+                <Link href="https://github.com/GabrielJM2023">
                   <FaGithub size={24} />
                 </Link>
-                <Link href="https://linkedin.com">
+                <Link href="https://www.linkedin.com/in/gabriel-jardim-machado">
                   <FaLinkedin size={24} />
                 </Link>
               </HStack>
@@ -277,89 +299,109 @@ export default function Home() {
 
       <Separator />
 
-    <Box id="projects" py="100px">
-      <Container maxW="container.lg">
-        <Stack gap={10}>
-          <Heading>Projetos</Heading>
+      {/* ================= PROJECTS ================= */}
+      <Box id="projects" py="100px">
+        <Container maxW="container.lg">
+          <Stack gap={10}>
+            <Heading>Projetos</Heading>
 
-          <Text color="muted" maxW="600px">
-            Projetos pessoais e sistemas que desenvolvi para resolver problemas reais e evoluir minha stack full stack.
-          </Text>
+            <Text color="muted" maxW="600px">
+              Projetos pessoais e sistemas que desenvolvi para resolver problemas
+              reais e evoluir minha stack full stack.
+            </Text>
 
-          <SimpleGrid columns={{ base: 1, md: 3 }} gap={6}>
-            {[
-              {
-                title: "MiniMoney",
-                desc: "Controle financeiro simples com dashboard e categorização de gastos.",
-                stack: "Next.js · Node · SQL",
-                highlight: "Foco em organização financeira pessoal",
-              },
-              {
-                title: "FootStats",
-                desc: "Dashboard com dados do Brasileirão e visualização de estatísticas.",
-                stack: "React · APIs · Charts",
-                highlight: "Consumo de APIs esportivas",
-              },
-              {
-                title: "ASOFY",
-                desc: "Sistema de gestão de ASO para clínicas e empresas.",
-                stack: "React · Node · Delphi",
-                highlight: "Sistema corporativo real",
-              },
-            ].map((project, i) => (
-              <MotionBox
-                key={project.title}
-                p={6}
-                bg="surface"
-                borderRadius="xl"
-                position="relative"
-                overflow="hidden"
-                cursor="pointer"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
-                whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                }}
-                _hover={{
-                  boxShadow: "0 18px 45px rgba(0,0,0,0.3)",
-                  borderColor: "green.300",
-                }}
-              >
-                <Stack gap={3}>
-                  <Heading size="md">{project.title}</Heading>
+            <SimpleGrid columns={{ base: 1, md: 3 }} gap={6}>
+              {projects.map((project, i) => (
+                <MotionBox
+                  key={project.title}
+                  p={6}
+                  bg={project.status === "online" ? "surface" : "gray.900"}
+                  borderRadius="xl"
+                  border="1px solid"
+                  borderColor={
+                    project.status === "online"
+                      ? "green.400"
+                      : "gray.700"
+                  }
+                  opacity={project.status === "online" ? 1 : 0.75}
+                  cursor={project.status === "online" ? "pointer" : "default"}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: i * 0.05 }}
+                  whileHover={
+                    project.status === "online"
+                      ? {
+                          y: -10,
+                          scale: 1.02,
+                        }
+                      : {
+                          y: -4,
+                        }
+                  }
+                  _hover={{
+                    boxShadow: "0 18px 45px rgba(0,0,0,.25)",
+                  }}
+                >
+                  <Stack gap={3}>
+                    {/* STATUS */}
+                    <Box
+                      w="fit-content"
+                      px={3}
+                      py={1}
+                      borderRadius="full"
+                      bg={
+                        project.status === "online"
+                          ? "green.500"
+                          : "gray.600"
+                      }
+                    >
+                      <Text fontSize="xs" color="white">
+                        {project.status === "online"
+                          ? "● Online"
+                          : "● Em desenvolvimento"}
+                      </Text>
+                    </Box>
 
-                  <Text fontSize="sm" color="muted">
-                    {project.desc}
-                  </Text>
+                    <Heading size="md">{project.title}</Heading>
 
-                  {/* CAMADA DE CONTEXTO (IMPORTANTE) */}
-                  <Text fontSize="xs" color="green.300">
-                    {project.highlight}
-                  </Text>
+                    <Text fontSize="sm" color="muted">
+                      {project.desc}
+                    </Text>
 
-                  {/* STACK (CREDIBILIDADE) */}
-                  <Text fontSize="xs" color="muted" opacity={0.8}>
-                    {project.stack}
-                  </Text>
+                    <Text fontSize="xs" color="green.300">
+                      {project.highlight}
+                    </Text>
 
-                  <Button
-                    mt={3}
-                    size="sm"
-                    colorPalette="green"
-                    _hover={{ transform: "translateY(-2px)" }}
-                  >
-                    Ver projeto
-                  </Button>
-                </Stack>
-              </MotionBox>
-            ))}
-          </SimpleGrid>
-        </Stack>
-      </Container>
-    </Box>
+                    <Text fontSize="xs" color="muted">
+                      {project.stack}
+                    </Text>
+
+                    <Button
+                      mt={3}
+                      size="sm"
+                      colorPalette={
+                        project.status === "online"
+                          ? "green"
+                          : "gray"
+                      }
+                      as="a"
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      disabled={project.status !== "online"}
+                    >
+                      {project.status === "online"
+                        ? "Ver projeto"
+                        : "Em breve"}
+                    </Button>
+                  </Stack>
+                </MotionBox>
+              ))}
+            </SimpleGrid>
+          </Stack>
+        </Container>
+      </Box>
 
       <Separator />
 
@@ -376,15 +418,37 @@ export default function Home() {
               <Heading>Contato</Heading>
 
               <Text color="muted">
-                Vamos trabalhar juntos? Me chame em uma das plataformas abaixo.
+                Tem uma ideia, projeto ou oportunidade? Vamos conversar. Estou sempre aberto a novos desafios e colaborações.
               </Text>
 
-              <HStack gap={4}>
-                <Button colorPalette="green" _hover={{ transform: "translateY(-2px)" }}>
+              <HStack gap={4} wrap="wrap">
+                <Button
+                  colorPalette="green"
+                  onClick={handleCopyEmail}
+                  _hover={{ transform: "translateY(-2px)" }}
+                >
                   Email
                 </Button>
-                <Button variant="outline">LinkedIn</Button>
-                <Button variant="outline">GitHub</Button>
+
+                <Button
+                  as="a"
+                  href="https://www.linkedin.com/in/gabriel-jardim-machado/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="outline"
+                >
+                  LinkedIn
+                </Button>
+
+                <Button
+                  as="a"
+                  href="https://github.com/GabrielJM2023"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="outline"
+                >
+                  GitHub
+                </Button>
               </HStack>
             </Stack>
           </MotionBox>
