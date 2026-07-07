@@ -26,8 +26,6 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-const email = "jardimgabriel2022@gmail.com";
-
 const handleCopyEmail = async () => {
   await navigator.clipboard.writeText(
     "jardimgabriel2022@gmail.com"
@@ -262,7 +260,7 @@ export default function Home() {
                   name: "Chakra UI",
                   desc: "UI moderna, consistente e acessível.",
                 },
-              ].map((skill, i) => (
+              ].map((skill) => (
                 <MotionBox
                   key={skill.name}
                   p={6}
@@ -377,23 +375,25 @@ export default function Home() {
                       {project.stack}
                     </Text>
 
-                    <Button
-                      mt={3}
+                    <Button mt={3}
                       size="sm"
                       colorPalette={
                         project.status === "online"
                           ? "green"
                           : "gray"
                       }
-                      as="a"
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       disabled={project.status !== "online"}
-                    >
-                      {project.status === "online"
-                        ? "Ver projeto"
-                        : "Em breve"}
+                      asChild>
+                        <Link
+                        rel="noopener noreferrer"                      
+                        as="a"
+                        href={project.href}
+                        target="_blank"
+                        >
+                        {project.status === "online"
+                          ? "Ver projeto"
+                          : "Em breve"}
+                        </Link>
                     </Button>
                   </Stack>
                 </MotionBox>
@@ -430,24 +430,28 @@ export default function Home() {
                   Email
                 </Button>
 
-                <Button
-                  as="a"
-                  href="https://www.linkedin.com/in/gabriel-jardim-machado/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="outline"
+                <Button variant="outline">
+                  <Link
+                    as="a"
+                    href="https://www.linkedin.com/in/gabriel-jardim-machado/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
-                  LinkedIn
+                    LinkedIn
+                  </Link>
                 </Button>
 
                 <Button
-                  as="a"
-                  href="https://github.com/GabrielJM2023"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   variant="outline"
                 >
-                  GitHub
+                  <Link
+                    target="_blank"
+                    as="a"
+                    href="https://github.com/GabrielJM2023"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </Link>
                 </Button>
               </HStack>
             </Stack>
